@@ -1,0 +1,6 @@
+rhapsode: bce2d99de270de2188060351bd120bc7a1ecb4dc
+cattrap: cdc350349a9cf2f83b74014a0bd7c264c67c8c79
+fontconfig-pure: dfb515ef6cc5a645e2d96120d34514ca146dcb57
+hurl: 41ee21d24c687c6d357025162d4da6f159e12157
+harfbuzz-pure: 4fd909d1651b9c716978c2f15a9f636b958761ab
+haskell-stylist: 0a7e279a67e8afcd5dcd90fc62921ffadbe1bb0f

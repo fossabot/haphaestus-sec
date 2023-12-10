@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:stylist"
+
+    - path: "src"
+      component: "stylist:test:test-stylist"
+
+    - path: "test"
+      component: "stylist:test:test-stylist"

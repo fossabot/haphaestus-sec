@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Haphaestus_scope.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+</head>
+
+<body>
+
+<h1>Haphaestus audit proposal</h1>
+
+<h2>Introduction</h2>
+
+<p><a href="https://haphaestus.org/">Haphaestus</a> is an open source browser to be used on TVs through a remote developed by [Argonaut Constellation][argonaut] and financed by NLnet. Haphaestus has the peculiarity of being javascript free. It is developed using Haskell on top of the Argonaut stack, a collection of open source modules handling various aspects of the product, from a CSS renderer to a URL resolver. The <a href="https://nlnet.nl/">NLnet</a> funding includes a security audit by <a href="https://www.radicallyopensecurity.com/">Radically Open Security (ROS)</a>, a non-profit company centered around software security. </p>
+
+<h2>Disclaimer</h2>
+
+<p>It is important to note that the Haphaestus product is currently under development, and no version of the browser itself is available to be audited. Instead, only the stack that Haphaestus is built on can be assessed in addition to <a href="https://git.argonaut-constellation.org/~alcinnz/rhapsode">Rhapsode</a>, another browser from the Argonaut Constellation on which Haphaestus will be based as well.</p>
+
+<p>This means that any findings surfaced by this audit might no longer be relevant in the final product, and items that were deemed safe could eventually become problematic. In addition, a security audit in itself bears no guarantee of ensuring that the product is foolproof to attacks or any kind of vulnerability. Instead, it is used to decrease the likelihood of such vulnerabilities existing and being exploited by attackers.</p>
+
+<h2>Stack and core components</h2>
+
+<p>A challenge of this audit is to link code elements to security properties while the final integration is being completed. The major components to consider are part of the [Argonaut stack][argonaut]. They can be found in two places: the <a href="https://git.argonaut-constellation.org/~jaro/">SourceHut</a> page of the first initial contributor, and the <a href="https://git.argonaut-constellation.org/~alcinnz/">SourceHut</a> page of the current main contributor, <a href="https://adrian.geek.nz/">Adrian Cochrane</a>. They are as follows:</p>
+
+<ul>
+<li><a href="https://git.argonaut-constellation.org/~alcinnz/fontconfig-pure">fontconfig-pure</a> is a font rendering engine containing bindings to fontconfig.</li>
+<li><a href="https://git.argonaut-constellation.org/~alcinnz/CatTrap">CatTrap</a> contains partial integration tests. It allows for downloading the page, styling and rendering it.</li>
+<li><a href="https://git.argonaut-constellation.org/~alcinnz/harfbuzz-pure">hardfuzz-pure</a> is a text shaping library.</li>
+<li>[bureaucromancy][bureau] is a library to parse and render forms.</li>
+<li><a href="https://git.argonaut-constellation.org/~alcinnz/haskell-stylist">haskell-stylist</a> is a css handling engine.</li>
+<li><a href="https://git.argonaut-constellation.org/~alcinnz/hurl">hurl</a> is the direct interface to the network.</li>
+</ul>
+
+<h2>Scope</h2>
+
+<h3>Scope overview</h3>
+
+<p>We propose a two fold audit, consisting of:</p>
+
+<ol>
+<li>A high-level security review of the project’s security model.</li>
+<li>A code review to manually assess the correctness of the code with respect to the high-level security properties below.</li>
+</ol>
+
+<h3>Security model</h3>
+
+<p>Here are the key elements of the security model for Haphaestus:</p>
+
+<ol>
+<li><strong>Javascript-free</strong>: Haphaestus is javascript free.</li>
+<li><strong>Minimal-user-info</strong>: Web servers should receive limited information by default (pages requested by users, desired language, browser behaviour, and two types of bandwidth reduction data – bucketed screen size and etags).</li>
+<li><strong>Media-requests-allowed</strong>: While a page is being downloaded, additional requests can be sent, such as images or other media parts of the page.</li>
+<li><strong>Interaction-data-minimized</strong>: After a page has been downloaded, no requests that leak interaction data (text you've selected, keypresses, zooming, anything finer grained then clicking links or submitting forms) shall be sent. Pages with dynamic content such as news feed, should require user input to allow the updates.</li>
+<li><strong>Sender-identity-protected</strong>: By default, servers should not be able to match requests coming from the same person, except by using browser sniffing which is not disallowed.</li>
+<li><strong>Turing-completeness-forbidden</strong>: Haphaestus should not run any Turing-Complete programs provided by web servers, aside from those embedded in fonts.</li>
+<li><strong>Crash-free</strong>: Web pages should never be able to crash the browser. This means that the exception handling mechanism should be robust and complete, and that there should not be infinite loops.</li>
+<li><strong>Robust-memory-model</strong>: Memory handling system should be robust.</li>
+<li><strong>Private-keys-safety</strong>: Private keys used for passkey authentication should not be leaked.</li>
+</ol>
+
+<h3>High level security review</h3>
+
+<p>A security expert will be provided to assess the completeness and relevance of the security model of Haphaestus, based on the previous items. The involvement of this expert will be small considering the current development state of the product.</p>
+
+<h3>Code review</h3>
+
+<p>A manual code review will be conducted by a safety/Haskell expert. This code review will attempt to surface discrepancies between the security model of Haphaestus and its implementation. Note that, based on the partial nature of the project, some of these properties might be ignored, when the code to support them is absent. In addition, this code review might surface other bugs and issues that are unrelated to the model. Code good practices will also be advised when applicable.</p>
+
+<p>In particular, here is a rough mapping between security properties and components:</p>
+
+<p>|#|Name|Components|
+|:---:|:---:|:---:|
+|1|Javascript-free|<a href="https://git.argonaut-constellation.org/~alcinnz/rhapsode">rhapsode</a>, <a href="https://git.argonaut-constellation.org/~alcinnz/CatTrap">CatTrap</a>|
+|2|Minimal-user-info|<a href="https://git.argonaut-constellation.org/~alcinnz/hurl">hurl</a>, <a href="https://git.argonaut-constellation.org/~alcinnz/haskell-stylist">stylist</a>|
+|3|Media-requests-allowed|<a href="https://git.argonaut-constellation.org/~alcinnz/CatTrap">CatTrap</a>, <a href="https://git.argonaut-constellation.org/~alcinnz/haskell-stylist">stylist</a>|
+|4|Interaction-data-minimized|<a href="https://git.argonaut-constellation.org/~alcinnz/CatTrap">CatTrap</a>, <a href="https://git.argonaut-constellation.org/~alcinnz/haskell-stylist">stylist</a>|
+|5|Sender-identity-protected|<a href="https://git.argonaut-constellation.org/~alcinnz/hurl">hurl</a>|
+|6|Turing-completeness-forbidden|<a href="https://git.argonaut-constellation.org/~alcinnz/CatTrap">CatTrap</a>, <a href="https://git.argonaut-constellation.org/~alcinnz/haskell-stylist">stylist</a>|
+|7|Crash-free|all components|
+|8|Robust-memory-model|<a href="https://git.argonaut-constellation.org/~alcinnz/fontconfig-pure">font-config</a>, <a href="https://git.argonaut-constellation.org/~alcinnz/harfbuzz-pure">harfbuzz</a>|
+|9|Private-keys-safety|<strong>not implemented yet</strong>|</p>
+
+<h2>Duration of work and starting date</h2>
+
+<p>We propose to begin this work on <strong>Monday the 27th of November</strong> for the following overlapping durations:
+- Security review: 3 days
+- Code review: 10 days
+This includes the reporting time and so the final report should be delivered on <strong>Friday the 8th of December</strong>. Any delay would not yield additional cost.</p>
+
+<h2>References</h2>
+
+</body>
+</html>

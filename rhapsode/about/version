@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>About Rhapsode</title>
+</head>
+<body>
+  <h1><a href="https://rhapsode.adrian.geek.nz/" title="Homepage">Rhapsode</a> version 5</h1>
+  <p>2019–2021 © <a href="https://adrian.geek.nz/" title="Author">Adrian Cochrane</a>, and others</p>
+  <p>Redistribution licensed under the
+    <a href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" title="License">GNU GPLv3</a>.
+    Ascending &amp; descending sound effects are
+    <a href="https://www.soundeffectsplus.com/content/license/" title="SoundEffects+ license">licensed not for individual reuse</a>
+    by <a href="https://www.soundeffectsplus.com/">SoundEffects+</a>.
+    <a href="https://mixkit.co/license/#sfxFree" title="mixkit license">Found sound</a>
+    effect is licensed not for individual reuse
+    by <a href="https://mixkit.co/free-sound-effects/">mixkit</a>.
+    Other sound effects are
+    <a href="https://www.copyrightlaws.com/what-is-the-public-domain/" title="Sound effects">Public Domain</a>
+    under <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>.</p>
+
+  <h2>Rhapsode would not be possible if not for the following projects</h2>
+  <ul>
+    <li><a href="https://github.com/espeak-ng/espeak-ng#espeak-ng-text-to-speech">eSpeakNG</a></li>
+    <li><a href="https://voice2json.org/" title="voice to jason">Voice2JSON</a>, backed by:<ul>
+      <li><a href="https://github.com/cmusphinx/pocketsphinx">PocketSphinx</a></li>
+      <li><a href="https://kaldi-asr.org/">Kaldi</a></li>
+      <li><a href="https://github.com/mozilla/DeepSpeech">Mozilla DeepSpeech</a></li>
+      <li><a href="https://github.com/julius-speech/julius">Julius</a></li>
+    </ul></li>
+    <li><a href="https://hackage.haskell.org/package/http-client-tls">HTTP Client</a></li>
+    <li><a href="https://hackage.haskell.org/package/xml-conduit">XML/HTML Conduit</a></li>
+    <li><a href="http://hackage.haskell.org/package/css-syntax">Haskell CSS Syntax</a></li>
+    <li>The incredible diversity of knowledge/entertainment/etc published online</li>
+  </ul>
+</body>
+</html>

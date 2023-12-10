@@ -1,0 +1,16 @@
+cradle:
+  cabal:
+    - path: "./"
+      component: "lib:cattrap"
+
+    - path: "app/Main.hs"
+      component: "cattrap:exe:cattrap"
+
+    - path: "app/Integration.hs"
+      component: "cattrap:exe:cattrap-argonaut"
+
+    - path: "app/Integration2.hs"
+      component: "cattrap:exe:cattrap-stylist"
+
+    - path: "test"
+      component: "cattrap:test:test-cattrap"

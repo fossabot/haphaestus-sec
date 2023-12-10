@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta encoding=utf-8 />
+  <title>CSS3 Speech Reference</title>
+  <style>
+    #cue-before {cue-before: url(about:link.wav)}
+    #cue-before-quiet {cue-before: url(about:link.wav) -0.1db}
+    #cue-after {cue-after: url(about:link.wav)}
+    #cue-after-quiet {cue-after: url(about:link.wav) -0.1db}
+  </style>
+</head>
+<body>
+  <p>This document lists the (audio related) CSS properties Rhapsode supports.
+    To hear the effect of these properties, listen to it in Rhapsode.</p>
+
+  <dl>
+    <dt><code>voice-volume</code> (initial <code>medium</code>)</dt>
+    <dd style="voice-volume: x-soft"><code>x-soft</code></dd>
+    <dd style="voice-volume: soft"><code>soft</code></dd>
+    <dd style="voice-volume: medium"><code>medium</code></dd>
+    <dd style="voice-volume: loud"><code>loud</code></dd>
+    <dd style="voice-volume: x-loud"><code>x-loud</code></dd>
+    <dd style="voice-volume: medium +2db">keyword _db, e.g. <code>medium +2db</code></dd>
+    <dd style="voice-volume: silent"><code>silent</code></dd>
+
+    <dt><code>speak</code> (initial <code>always</code>)</dt>
+    <dd>Can be <code>always</code> or <code>never</code> to determine whether the text is read.</dd>
+
+    <dt><code>speak-as</code> (initial <code>normal</code>)</dt>
+    <dd style="speak-as: normal"><code>normal</code></dd>
+    <dd style="speak-as: spell-out"><code>spell-out</code></dd>
+    <dd style="speak-as: digits"><code>digits</code></dd>
+    <dd style="speak-as: literal-punctuation"><code>literal-punctuation</code>, can be suffixed to <code>normal</code>, <code>spell-out</code>, or <code>digits</code>.</dd>
+    <dd style="speak-as: no-punctuation"><code>no-punctuation</code>, as per <code>literal-punctuation</code>.</dd>
+
+    <dt><code>pause-before</code> (initial <code>none</code>, non-inherited)</dt>
+    <dd style="pause-before: 500ms">_ms, e.g. <code>500ms</code></dd>
+    <dd style="pause-before: 1s">_s, e.g. <code>1s</code></dd>
+    <dd style="pause-before: none"><code>none</code></dd>
+    <dd style="pause-before: x-weak"><code>x-weak</code></dd>
+    <dd style="pause-before: weak"><code>weak</code></dd>
+    <dd style="pause-before: medium"><code>medium</code></dd>
+    <dd style="pause-before: strong"><code>strong</code></dd>
+    <dd style="pause-before: x-strong"><code>x-strong</code></dd>
+
+    <dt><code>pause-after</code> (initial <code>none</code>, non-inherited)</dt>
+    <dd style="pause-after: 500ms">_ms, e.g. <code>500ms</code></dd>
+    <dd style="pause-after: 1s">_s, e.g. <code>1s</code></dd>
+    <dd style="pause-after: none"><code>none</code></dd>
+    <dd style="pause-after: x-weak"><code>x-weak</code></dd>
+    <dd style="pause-after: weak"><code>weak</code></dd>
+    <dd style="pause-after: medium"><code>medium</code></dd>
+    <dd style="pause-after: strong"><code>strong</code></dd>
+    <dd style="pause-after: x-strong"><code>x-strong</code></dd>
+
+    <dt><code>pause</code> (shorthand)</dt>
+    <dd><code>pause-before</code> <code>pause-after</code></dd>
+    <dd>Single token, both <code>pause-before</code> & <code>pause-after</code> are set to the same value.</dd>
+
+    <dt><code>rest-before</code> (initial <code>none</code>, non-inherited)</dt>
+    <dd style="rest-before: 500ms">_ms, e.g. <code>500ms</code></dd>
+    <dd style="rest-before: 1s">_s, e.g. <code>1s</code></dd>
+    <dd style="rest-before: none"><code>none</code></dd>
+    <dd style="rest-before: x-weak"><code>x-weak</code></dd>
+    <dd style="rest-before: weak"><code>weak</code></dd>
+    <dd style="rest-before: medium"><code>medium</code></dd>
+    <dd style="rest-before: strong"><code>strong</code></dd>
+    <dd style="rest-before: x-strong"><code>x-strong</code></dd>
+
+    <dt><code>rest-after</code> (initial <code>none</code>, non-inherited)</dt>
+    <dd style="rest-after: 500ms">_ms, e.g. <code>500ms</code></dd>
+    <dd style="rest-after: 1s">_s, e.g. <code>1s</code></dd>
+    <dd style="rest-after: none"><code>none</code></dd>
+    <dd style="rest-after: x-weak"><code>x-weak</code></dd>
+    <dd style="rest-after: weak"><code>weak</code></dd>
+    <dd style="rest-after: medium"><code>medium</code></dd>
+    <dd style="rest-after: strong"><code>strong</code></dd>
+    <dd style="rest-after: x-strong"><code>x-strong</code></dd>
+
+    <dt><code>rest</code> (shorthand)</dt>
+    <dd><code>rest-before</code> <code>rest-after</code></dd>
+    <dd>Single token, both <code>rest-before</code> & <code>rest-after</code> are set to the same value.</dd>
+
+    <dt><code>cue-before</code> (initial <code>none</code>, non-inherited)</dt>
+    <dd><em>Not supported within style attributes, side-effect of security measures</em></dd>
+    <dd style="cue-before: none"><code>none</code></dd>
+    <dd id="cue-before">url(_), e.g. <code>url(about:link.wav)</code></code></dd>
+    <dd id="cue-before-quiet">url(_) _db, e.g. <code>url(about:link.wav) -1db</code></dd>
+
+    <dt><code>cue-after</code> (initial <code>none</code>, non-inherited)</dt>
+    <dd><em>Not supported within style attributes, side-effect of security measures</em></dd>
+    <dd style="cue-after: none"><code>none</code></dd>
+    <dd id="cue-after">url(_), e.g. <code>url(about:link.wav)</code></dd>
+    <dd id="cue-after-quiet">url(_) _db, e.g. <code>url(link.wav) -1db</code></dd>
+
+    <dt><code>cue</code> (shorthand)</dt>
+    <dd><code>cue-before</code> <code>cue-after</code></dd>
+    <dd>Single token, both <code>cue-before</code> & <code>cue-after</code> are set to the same value</dd>
+
+    <dt>voice-family</dt>
+    <dd style="voice-family: preserve"><code>preserve</code></dd>
+    <dd style="voice-family: whisper">by name, e.g. <code>whisper</code></dd>
+    <dd>By gender, i.e. <code style="voice-family: male">male</code>, <code style="voice-family: female">female</code>, or <code style="voice-family: nuetral">neutral</code>.</dd>
+    <dd style="voice-family: old male">By gender and age, e.g. <code>old male</code></dd>
+    <dd style="voice-family: female 3">By gender and variant number, e.g. <code>female 3</code>.</dd>
+
+    <dt><code>voice-rate</code> (initial <code>normal</code>)</dt>
+    <dd style="voice-rate: normal"><code>normal</code></dd>
+    <dd style="voice-rate: x-slow"><code>x-slow</code></dd>
+    <dd style="voice-rate: slow"><code>slow</code></dd>
+    <dd style="voice-rate: medium"><code>medium</code></dd>
+    <dd style="voice-rate: fast"><code>fast</code></dd>
+    <dd style="voice-rate: x-fast"><code>x-fast</code></dd>
+    <dd style="voice-rate: fast 50%">keyword _%, e.g. <code>fast 50%</code></dd>
+
+    <dt><code>voice-pitch</code> (initial <code>medium</code>)</dt>
+    <dd style="voice-pitch: x-low"><code>x-low</code></dd>
+    <dd style="voice-pitch: low"><code>low</code></dd>
+    <dd style="voice-pitch: medium"><code>medium</code></dd>
+    <dd style="voice-pitch: high"><code>high</code></dd>
+    <dd style="voice-pitch: x-high"><code>x-high</code></dd>
+    <dd style="voice-pitch: low +500hz">keyword _hz, e.g. <code>low +500hz</code></dd>
+    <dd style="voice-pitch: low +10khz">keyword _khz, e.g. <code>low +10khz</code></dd>
+    <dd style="voice-pitch: low +2st">keyword _st, e.g. <code>low +2st</code>. In semitones.</dd>
+    <dd style="voice-pitch: low 50%">keyword _%, e.g. <code>low 50%</code></dd>
+    <dd style="voice-pitch: +500hz">_hz, e.g. <code>+500hz</code>. Difference from current value.</dd>
+    <dd style="voice-pitch: +10khz">_khz, e.g. <code>+10khz</code>. Difference from current value.</dd>
+    <dd style="voice-pitch: 500hz absolute">_hz absolute <em>or</em> absolute _hz, e.g. <code>500hz absolute</code></dd>
+    <dd style="voice-pitch: 10khz absolute">_khz absolute <em>or</em> absolute _hz, e.g. <code>10khz absolute</code></dd>
+
+    <dt><code>voice-range</code> (initial <code>medium</code>)</dt>
+    <dd style="voice-range: x-low"><code>x-low</code></dd>
+    <dd style="voice-range: low"><code>low</code></dd>
+    <dd style="voice-range: medium"><code>medium</code></dd>
+    <dd style="voice-range: high"><code>high</code></dd>
+    <dd style="voice-range: x-high"></code>x-high</dd>
+    <dd style="voice-range: low +500hz">keyword _hz, e.g. <code>low +500hz</code></dd>
+    <dd style="voice-range: low +10khz">keyword _khz, e.g. <code>low +10khz</code></dd>
+    <dd style="voice-range: low +2st">keyword _st, e.g. <code>low +2st</code>. In semitones.</dd>
+    <dd style="voice-range: low 50%">keyword _%, e.g. <code>low 50%</code></dd>
+    <dd style="voice-range: +500hz">_hz, e.g. <code>+500hz</code>. Difference from current value.</dd>
+    <dd style="voice-range: +10khz">_khz, e.g. <code>+10khz</code>. Difference from current value.</dd>
+    <dd style="voice-range: 500hz absolute">_hz absolute <em>or</em> absolute _hz, e.g. <code>500hz absolute</code></dd>
+    <dd style="voice-range: 10khz absolute">_khz absolute <em>or</em> absolute _hz, e.g. <code>10khz absolute</code></dd>
+
+    <dt><code>voice-stress</code> (initial <code>normal</code>)</dt>
+    <dd style="voice-stress: normal"><code>normal</code></dd>
+    <dd style="voice-stress: strong"><code>strong</code></dd>
+    <dd style="voice-stress: medium"><code>medium</code></dd>
+    <dd style="voice-stress: none"><code>none</code></dd>
+    <dd style="voice-stress: reduced"><code>reduced</code></dd>
+
+    <dt><code>-rhaps-marker</code> (initial <code>""</code>, Rhapsode-specific)</dt>
+    <dd>Indicates navigation interactions</dd>
+    <dd><code>-rhaps-section</code> (navigate using up & down keys)</dd>
+    <dd><code>-rhaps-paragraph</code> (navigate using left & right keys)</dd>
+    <dd><code>"-rhaps-tablecell"_":"_"x"_</code> (navigate tables using arrow keys)</dd>
+    <dd><code>"main"</code> (starting element)</dd>
+  </dl>
+  <aside><audio src="css-reference.ogg" controls></audio></aside>
+</body>
+</html>

@@ -1,0 +1,131 @@
+link[rel=stylesheet], meta, style, script, base {speak: never}
+datalist, template {speak: never}
+:root {
+    speak-as: normal no-punctuation;
+    counter-reset: -rhaps-table, -rhaps-section, -rhaps-paragraph
+}
+[lang] {-rhaps-lang: attr(lang)} /* Pass this info through styletree into output */
+:target {-rhaps-marker: "main"}
+
+/** Forms **/
+button, select, textarea, input, output {speak: never} /* Leave to special form entry mode */
+button[type=submit] {speak: always}
+input[type=submit][value] {speak: always; content: attr(value)}
+
+form[title] {content: attr(title)} /* Ideal UX for (inline) <form>s. */
+form[alt] {content: attr(alt)}
+
+/** Tables **/
+table::before {content: "Table"; voice-volume: x-soft}
+table:lang(hu)::before {content: "táblázat"}
+table:lang(nl)::before {content: "tabel"}
+table:lang(es)::before {content: "tabla"}
+table:lang(it)::before {content: "tabella"}
+table:lang(sv)::before {content: "tabell"}
+table:lang(nb-NO)::before {content: "tabell"}
+/* FIXME: debug why table:lang(sv)::before, table:lang(nb-NO)::before {content: "tabell"} crashes the parser */
+table {counter-increment: -rhaps-table; counter-reset: -rhaps-tablerow}
+tr {
+    cue-before: url(about:bulletpoint.wav);
+    counter-increment: -rhaps-tablerow;
+    counter-reset: -rhaps-tablecol;
+}
+td, th {
+    cue-before: url(about:bulletpoint.wav) -0.1db;
+    -rhaps-marker: "-rhaps-tablecell" counter(-rhaps-table) ":" counter(-rhaps-tablerow) "x" counter(-rhaps-tablecol);
+    counter-increment: -rhaps-tablecol attr(rowspan); /* TODO parse this syntax */
+    counter-increment: -rhaps-tablecol;
+}
+td::before, th::before {
+    content: counter(-rhaps-tablerow) " " counter(-rhaps-tablecol, upper-latin)
+}
+table caption {voice-volume: soft}
+
+/** Sectioning **/
+footer, header {voice-volume: soft}
+nav {speak: never} /* Expose the links for navigation, but not narration */
+h1, h2, h3, h4, h5, h6, legend, th, summary, dt {voice-stress: strong}
+h1, h2, h3, h4, h5, h6, section, aside {-rhaps-marker: -rhaps-section}
+h1 {pause: x-strong; voice-rate: x-slow}
+h2 {pause: strong; voice-rate: slow}
+h3, th, summary, legend, dt {pause: medium; voice-rate: medium}
+h4 {pause: weak; voice-rate: fast}
+h5, h6 {pause: x-weak; voice-rate: fast}
+h6 {voice-pitch: high}
+
+/** Text **/
+hr {pause: x-strong}
+p, pre, samp, blockquote {pause: strong; -rhaps-marker: -rhaps-paragraph}
+pre, address, samp {speak-as: literal-punctuation}
+pre, samp, code {voice: neutral 2; white-space: pre;}
+:link {cue-after: url(about:link.wav) !important; voice-pitch: low}
+link[rel] {content: attr(rel)}
+link[rel=alternate][type] {content: -rhaps-filetype(attr(type))}
+link[title] {content: attr(title)} /* [title] overrides [rel] */
+:visited {cue-after: url(about:link.wav) -0.1db !important}
+img {content: "Image " attr(src)}
+img:lang(hu):not([alt]) {content: "kép " attr(src)}
+img:lang(nl):not([alt]) {content: "afbeelding " attr(src)}
+img:lang(es):not([alt]) {content: "imagen " attr(src)}
+img:lang(it):not([alt]) {content: "immagine " attr(src)}
+img:lang(sv):not([alt]) {content: "bild " attr(src)}
+img:lang(nb-NO):not([alt]) {content: "bilde " attr(src)}
+img[alt] {content: attr(alt)}
+
+b, strong {voice-rate: slow}
+i, em {voice-stress: strong}
+br {pause: medium}
+code {speak-as: literal-punctuation}
+s, del {voice-volume: x-soft}
+u, ins {voice-volume: loud}
+
+/** lists **/
+li, dt, dd {
+    cue-before: url(about:bulletpoint.wav);
+    pause: strong;
+    -rhaps-marker: -rhaps-paragraph;
+}
+li li, dd dt, dd dd {cue-before: url(about:bulletpoint.wav) -0.1db}
+li li li, dd dd dt, dd dd dd {cue-before: url(about:bulletpoint.wav) -0.2db}
+li li li li, dd dd dd dt, dd dd dd dd {cue-before: url(about:bulletpoint.wav) -0.3db}
+li li li li li, dd dd dd dd dt, dd dd dd dd dd {
+    cue-before: url(about:bulletpoint.wav) -0.4db
+}
+li li li li li li, dd dd dd dd dd dt, dd dd dd dd dd dd {
+    cue-before: url(about:bulletpoint.wav) -0.5db
+}
+
+ol li::marker {
+    content: counters(list-item, " ") " ";
+}
+ul, ol {-rhaps-marker: -rhaps-section}
+
+/** HTML5 **/
+abbr[title]::after {content: attr(title); voice-volume: x-soft}
+abbr {speak-as: spell-out}
+
+q, blockquote {voice-family: female 2}
+cite {voice-stress: reduce}
+dialog:not([open]) {speak: always}
+kbd {speak-as: spell-out}
+progress {content: -rhaps-percentage(attr(value) attr(max)) "%"}
+sub {voice-rate: x-fast}
+sup {voice-rate: fast}
+var {voice-rate: slow}
+aside {voice-volume: soft}
+mark {voice-range: high; voice-pitch: high; cue-before: url(about:found.wav)}
+
+details > :not(summary:first-of-type) {speak: never}
+details:target > *, details:target-within > *, details[open] > * {speak: always}
+
+/* Localized into:
+- English
+- French (surprisingly same as English)
+- Hungarian
+- Dutch
+- Spanish */
+
+/** ARIA **/
+[aria-hidden] {speak: never}
+th[aria-sort=ascending] {cue-before: url(about:ascending.wav)}
+th[aria-sort=descending] {cue-after: url(about:descending.wav)}

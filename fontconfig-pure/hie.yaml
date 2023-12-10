@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "./"
+      component: "lib:fontconfig-pure"
+
+    - path: "./Main.hs"
+      component: "fontconfig-pure:exe:fontconfig-pure"
+
+    - path: "test"
+      component: "fontconfig-pure:test:test-fontconfig"

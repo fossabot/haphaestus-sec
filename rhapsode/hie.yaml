@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:rhapsode"
+
+    - path: "src/main.c"
+      component: "rhapsode:exe:rhapsode"
+
+    - path: "src/Stub.hs"
+      component: "rhapsode:exe:rhapsode"

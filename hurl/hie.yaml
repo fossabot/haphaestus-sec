@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:hurl"
+
+    - path: "./Main.hs"
+      component: "hurl:exe:hurl"
+
+    - path: "./Main2.hs"
+      component: "hurl:exe:hurl-post"

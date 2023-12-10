@@ -1,0 +1,7 @@
+cradle:
+  cabal:
+    - path: "."
+      component: "lib:fontconfig-harfbuzz"
+
+    - path: "app/Main.hs"
+      component: "fontconfig-harfbuzz:exe:fontconfig-harfbuzz"

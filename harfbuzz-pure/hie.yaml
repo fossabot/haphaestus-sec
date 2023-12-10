@@ -1,0 +1,13 @@
+cradle:
+  cabal:
+    - path: "./"
+      component: "lib:harfbuzz-pure"
+
+    - path: "./Main.hs"
+      component: "harfbuzz-pure:exe:shape-text"
+
+    - path: "bench/Main.hs"
+      component: "harfbuzz-pure:exe:benchmark-harfbuzz"
+
+    - path: "bench/Main.hs"
+      component: "harfbuzz-pure:bench:bench-harfbuzz"

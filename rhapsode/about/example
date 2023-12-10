@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Sample Page</title>
+</head>
+<body>
+  <header>
+    Page Header
+    <h1>Sample Page Heading Level 1</h1>
+  </header>
+  <p>Paragraph</p>
+  <p>This page illustrates how websites sound by default. Websites may override
+    these intonations & behaviors.</p>
+  <h2>Heading Level 2. Navigating headers using <key>up</key> & <key>down</key></h2>
+  <p>Navigate paragraphs using <key>left</key> & <key>right</key>.</p>
+  <h3>Heading Level 3</h3>
+  <p><a href="about:version">link</a> <code>computer source code</code>
+    <em>emphasized</em> <strong>strong</strong> <key>keyboard key</key>
+    <q>Quote</q>.</p>
+  <h4>Heading Level 4, followed by unordered list</h4>
+  <ul>
+    <li>Unordered list item</li>
+    <li>Navigate items using <key>left</key> & <key>right</key></li>
+    <li>Navigate between lists using <key>up</key> & <key>down</key></li>
+  </ul>
+  <h5>Heading Level 5, followed by ordered list</h5>
+  <ol>
+    <li>Ordered list item</li>
+    <li>Navigate like unordered lists</li>
+    <li>Profit!</li>
+  </ol>
+  <h6>Heading Level 6, followed by definition list</h6>
+  <dl>
+    <dt>Rhapsode</dt>
+    <dd>A rhapsode or, in modern usage, rhapsodist, refers to a classical Greek professional performer of epic poetry in the fifth and fourth centuries BC (and perhaps earlier). <cite href="https://en.wikipedia.org/wiki/Rhapsode">Wikipedia</cite></dd>
+  </dl>
+  <hr />
+  <article>Independant article</article>
+  <aside>Sidenote</aside>
+  <table>
+    <caption>Table</caption>
+    <tr>
+      <th>Name</th><th>Salary</th><th>Extension</th><th>Start date</th>
+      <th>Start date (American)</th>
+    </tr>
+    <tr><td>Bloggs, Fred</td><td>$12000.00</td>
+      <td>1353</td><td>18/08/2003</td><td>08/18/2003</td></tr>
+    <tr><td>Turvey, Kevin</td><td>$191200.00</td>
+      <td>2342</td><td>02/05/1979</td><td>05/02/1979</td></tr>
+    <tr><td>Mbogo, Arnold</td><td>$32010.12</td>
+      <td>2755</td><td>09/08/1998</td><td>08/09/1998</td></tr>
+    <tr><td>Shakespeare, Bill</td><td>$122000.00</td>
+      <td>3211</td><td>12/11/1961</td><td>11/12/1961</td></tr>
+    <tr><td>Shakespeare, Hamnet</td><td>$9000</td>
+      <td>9005</td><td>01/01/2002</td><td>01/01/2002</td></tr>
+    <tr><td>Fitz, Marvin</td><td>$3300</td>
+      <td>5554</td><td>22/05/1995</td><td>05/22/1995</td></tr>
+  </table>
+  <p>Navigate table cells spatially using <key>up</key>, <key>down</key>,
+    <key>left</key>, <key>right</key>.</p>
+  <pre>Preformatted text</pre>
+  <samp>Sample text</samp>
+  <blockquote>
+    <p>For this to be possible, the method of storage must not place its own
+      restraints on the information. This is why a "web" of notes with links
+      (like references) between them is far more useful than a fixed hierarchical
+      system.</p>
+    <cite href="https://www.w3.org/History/1989/proposal.html">Tim Berners-Lee</cite>
+  </blockquote>
+  <footer>Page footer</footer>
+</body>
+</html>

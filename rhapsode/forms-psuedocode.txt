@@ -1,0 +1,57 @@
+How do HTML5 forms lower to prompts?
+
+Element     Required?   free-form?      ngrams      editable?                   options             multiple?   Notes
+text/search @required   Yes             from page   !@readonly || !@disabled    ref'd by @list      No
+radio       @required   No              -           ...                         inputs sharing name No          <label> refers to individual options instead.
+checkbox (1)@required   No              -           ...                         Yes/No/synonyms     No
+Checkbox    @required   No              -           ...                         inputs sharing name Yes         <label> refers to individual options instead.
+submit      No          No              -           Yes                         None                No          Target read as METHOD ACTION, labelled by @value or innertext.
+<select>    @required   No              -           !@readonly || !@disabled    child <option>s     @multiple
+<textarea>  @required   Yes             from page   !@readonly || !@disabled    None                Yes
+button      UNSUPPORTED (requires JavaScript)
+<legend>    Yes (shows) No              -           No                          None                No          Serves purely as a label.
+<output>    No          Yes             None        No                          None                No          Requires JS, but it'd be nice to have an alternative.
+password    @required   Yes             None        !@readonly || !@disabled    "New password"      No          Obscured in output.
+reset       No          No              -           Yes                         None                No          Links to current form (unfilled).
+color       @required   No              -           !@readonly || !@disabled    CSS3 color keywords No          Benefits from a system dialog, given it's inherantly a visual concept.
+date        @required   Yes             day/month/year/ago      ...             "Today"             No          Reprocessed into ISO date.
+datetime-local @requiredYes             day/month/year/hour/minutes     ...     "Now"               No          Reprocessed into ISO date.
+email       @required   Yes             @/./alphadigit/etc      ...                                 @multiple   spaces removed, instantiates punctuation
+file        @required   Yes             (custom recognizer)     ...                                 @multiple   Benefits from system dialog
+month       @required   Yes             month/year              ...             "This month"        No          Reprocessed into ISO date
+number/range@required   Yes             digit       ...                                             No
+tel         @required   Yes             digits (ignore -)       ...                                 No
+time        @required   Yes             digits/am/pm        ...                 "Now"               No          Reprocessed into ISO time.
+url         @required   Yes             browser history/alnum/punctuation   ... bookmarks           No          spaces removed, instantiates punctuation, infers https
+week        (AS PER date, reprocessed)
+
+Attributes:
+@value - prefilled value, if set removes from initial prompts.
+@readonly/@disabled - disables editting, removes from initial prompts.
+@size - IGNORED
+@maxlength - postprocessing validation
+@min/@max - postprocessing validation
+@multiple - sets this prompt to repeat until user says "next".
+@pattern - gives hint as to punctuation to expect, postprocessing validation.
+@placeholder - fallback for <label>
+@required - adds to initial prompts. If none are required it'll consider all inputs required.
+@step - prostprocessing validation.
+@autofocus - triggers this form mode.
+@height/@width - IGNORED
+@list - sets named options.
+@autocomplete - IGNORED, always autocompletes.
+Be nice to let inputs their own ngrams/vocabulary!
+
+@formaction, @formenctype, @formmethod, @formtarget - where to send form data.
+@formnovalidate - disables postprocessing validation.
+Be nice to let forms link to newline seperated "phrases" which can be used to fill in multiple inputs simultaneously, more conversationally.
+
+## Collaborator thoughts
+@alcinnz
+1) Knowing that you have a tree rather than a buffer as the underlying data structure for the output is the most important detail. It means, for example, that you can treat forms that are children of navigation differently than those that appear in tags more likely to be the focus of the page
+
+2) You'll probably have at least 2 C APIs before you're done - one that tries for minimal processing on the C side and another that tries to expose as much as possible to C programmers. The things I want a library for are going to take much longer than what I want a browser for, if that helps you to focus on defining that boundary in a way that's minimally invasive to producing a GUI application for the desktop
+
+3) If you just want a regexp engine that can compile and evaluate Posix regexps supplied by developers, you probably won't find much better than the TRE library. Ignoring the extra features, it has a small code footprint and makes efficient algorithm choices for matching
+
+Free text is a whole other issue. You owe it to yourself to make it as easy as possible for others to serve their personal biases with minimal intervention from you 😎

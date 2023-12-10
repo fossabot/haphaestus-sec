@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+</head>
+<body>
+  <h1>Welcome to <a href="https://rhapsode-web.org/"><strong>Rhapsode</strong></a>!</h1>
+  <p><a href="about:example" title="How do webpages sound?"><em>Hear</em></a> the vast breadth of <strong>
+    <a href="https://searchmysite.net/search/browse/" title="SearchMySite.Net catalogue">knowledge</a> &
+    <a href="https://adrian.geek.nz/movies" title="Adrian Cochrane's audio show, etc recommendations">entertainment</a>
+   </strong> available online!</p>
+
+  <p>Repeat back the name of a <a href="https://searchmysite.net/search/random/" title="Random link">link</a> to hear <em>all</em> about that topic.</p>
+
+  <!-- Follow up with links table -->
+</body>
+</html>
